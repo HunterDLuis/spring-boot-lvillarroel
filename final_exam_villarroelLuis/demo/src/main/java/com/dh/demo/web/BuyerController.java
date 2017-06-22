@@ -47,11 +47,8 @@ public class BuyerController {
     }
     @RequestMapping(method = RequestMethod.PUT,value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBuyer(@RequestBody Buyer buyer,@PathVariable long id){
-        Buyer buyerOld = buyerService.getBuyerById(id);
-        if(buyerOld != null){
-            buyerService.updateBuyer(buyer);
-        }
+    public void updateBuyer(@RequestBody BuyerRequestDTO buyer,@PathVariable long id){
+        buyerService.updateBuyer(id,buyer);
     }
 
     @RequestMapping(method = RequestMethod.POST)

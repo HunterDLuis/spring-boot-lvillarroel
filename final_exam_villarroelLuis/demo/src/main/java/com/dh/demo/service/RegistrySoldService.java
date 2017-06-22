@@ -32,6 +32,29 @@ public class RegistrySoldService {
         return registrySoldRepository.findOne(id);
     }
 
+    public void updateRegistrySold(RegistrySoldController.RegistrySoldRequestDTO registrySoldDTO, Long id){
+
+        Sold updateSold = soldRepository.findOne(registrySoldDTO.getSoldId());
+        Car updateCar = carRepository.findOne(registrySoldDTO.getCarId());
+        RegistrySold registrySold = registrySoldRepository.findOne(id);
+
+        if(registrySoldDTO.getSoldId()!=null){
+            registrySold.setSold(updateSold);
+        }
+        if(registrySoldDTO.getCarId()!=null){
+            registrySold.setCar(updateCar);
+        }
+        if(registrySoldDTO.getAmount()!=null){
+            registrySold.setAmount(registrySoldDTO.getAmount());
+        }
+        if(registrySoldDTO.getAddAmount()!=null){
+            registrySold.setAddAmount(registrySoldDTO.getAddAmount());
+        }
+        if(registrySoldDTO.getDateofsell()!=null){
+            registrySold.getDateofsell(registrySoldDTO.getDateofsell());
+        }
+    }
+
     public void addNewRegistrySold(RegistrySoldController.RegistrySoldRequestDTO registrySoldDTO){
         RegistrySold newregistrySold = new RegistrySold();
         Car newcar = carRepository.findOne(registrySoldDTO.getCarId());

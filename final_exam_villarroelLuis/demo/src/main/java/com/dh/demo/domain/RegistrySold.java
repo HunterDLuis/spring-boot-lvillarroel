@@ -74,8 +74,8 @@ public class RegistrySold {
         this.addAmount = addAmount;
     }
 
-    public Date getDateofsell() {
-        return dateofsell;
+    public Date getDateofsell(Date dateofsell) {
+        return this.dateofsell;
     }
 
     public void setDateofsell(Date dateofsell) {

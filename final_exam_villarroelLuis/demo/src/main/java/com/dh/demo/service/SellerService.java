@@ -24,9 +24,24 @@ public class SellerService {
         return sellerRepository.findOne(id);
     }
 
-    public Seller updateSeller(Seller seller){
-        return seller;
+    public void updateSeller(SellerController.SellerRequestDTO sellerDTO,Long id){
+
+        Seller seller = sellerRepository.findOne(id);
+        if(sellerDTO.getName()!=null){
+            seller.setName(sellerDTO.getName());
+        }
+        if(sellerDTO.getEdad()!=null){
+            seller.setEdad(sellerDTO.getEdad());
+        }
+        if(sellerDTO.getCi()!=null){
+            seller.setCi(sellerDTO.getCi());
+        }
+        if(sellerDTO.getNum_car_sold()!=null){
+            seller.setNum_car_sold(sellerDTO.getNum_car_sold());
+        }
+        sellerRepository.save(seller);
     }
+
 
     public void addNewSeller(SellerController.SellerRequestDTO newSellerDTO){
         Seller newseller = new Seller();

@@ -46,11 +46,9 @@ public class SoldController {
         return response;
     }
 
-    @RequestMapping(method = RequestMethod.PATCH)
-    public ResponseEntity updateSold(@RequestBody Sold sold){
-        logger.info("test---->"+sold.getId());
-        System.out.println("the values i");
-        return new ResponseEntity(HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.PUT,value = "/{id}")
+    public void updateSolds(@RequestBody SoldRequestDTO sold,long id){
+        soldService.updateSold(sold,id);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)

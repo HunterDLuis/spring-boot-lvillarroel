@@ -27,8 +27,23 @@ public class BuyerService {
         return buyerRepository.findOne(id);
     }
 
-    public Buyer updateBuyer(Buyer buyer){
-        return buyer;
+    public void updateBuyer(Long id,BuyerController.BuyerRequestDTO buyerDTO){
+
+        Buyer buyer = buyerRepository.findOne(id);
+        if(buyerDTO.getName()!=null){
+            buyer.setName(buyerDTO.getName());
+        }
+        if(buyerDTO.getCi()!=null){
+            buyer.setCi(buyerDTO.getCi());
+        }
+        if(buyerDTO.getCel()!=null){
+            buyer.setCel(buyerDTO.getCel());
+        }
+        if(buyerDTO.getProfession()!=null){
+            buyer.setProfession(buyerDTO.getProfession());
+        }
+        buyerRepository.save(buyer);
+
     }
 
     public void addNewBuyer(BuyerController.BuyerRequestDTO newBuyerDTO){

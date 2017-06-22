@@ -48,11 +48,8 @@ public class CarController {
     //acturalizar carro
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCar(@RequestBody Car car,@PathVariable long id){
-        Car carOld = carService.getCarId(id);
-        if(carOld!=null){
-            carService.updateCar(car);
-        }
+    public void updateCar(@RequestBody  CarRequestDTO car,@PathVariable long id){
+       carService.updateCar(car,id);
     }
 
     //eliminar car

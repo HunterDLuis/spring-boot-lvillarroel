@@ -42,11 +42,8 @@ public class SellerController {
 
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateSeller(@RequestBody Seller seller,@PathVariable long id){
-        Seller sellerOld = sellerService.getSeller(id);
-        if(sellerOld!=null){
-            sellerService.updateSeller(seller);
-        }
+    public void updateSeller(@RequestBody SellerRequestDTO seller,@PathVariable long id){
+        sellerService.updateSeller(seller,id);
     }
 
     @RequestMapping(method = RequestMethod.PATCH)

@@ -40,6 +40,12 @@ public class RegistrySoldController {
         return response;
     }
 
+    @RequestMapping(method = RequestMethod.PUT,value = "/{id}")
+    public void updateRegistrySolds(@RequestBody RegistrySoldRequestDTO registrySoldDTO,@PathVariable long id){
+
+        registrySoldService.updateRegistrySold(registrySoldDTO,id);
+    }
+
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeRegistrySold(@PathVariable long id){

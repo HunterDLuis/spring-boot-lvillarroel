@@ -35,8 +35,25 @@ public class CarService {
         carRepository.save(newCar);
     }
 
-    public  Car updateCar(Car car){
-        return car;
+    public  void updateCar(CarController.CarRequestDTO carDTO,Long id){
+        Car car = carRepository.findOne(id);
+
+        if(carDTO.getBrand()!=null){
+            car.setBrand(carDTO.getBrand());
+        }
+        if(carDTO.getYear()!=null){
+            car.setYear(carDTO.getYear());
+        }
+        if(carDTO.getModel()!=null){
+            car.setModel(carDTO.getModel());
+        }
+        if(carDTO.getColor()!=null){
+            car.setColor(carDTO.getColor());
+        }
+        if(carDTO.getImage()!=null){
+            car.setImage(carDTO.getImage());
+        }
+        carRepository.save(car);
     }
 
     public void deleteCar(Long id){

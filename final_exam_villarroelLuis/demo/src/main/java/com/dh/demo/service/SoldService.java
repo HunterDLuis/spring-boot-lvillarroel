@@ -33,6 +33,26 @@ public class SoldService {
         return soldRepository.findOne(id);
     }
 
+    public void updateSold(SoldController.SoldRequestDTO soldDTO,Long id){
+
+        Buyer updateBuyer = buyerRepository.findOne(soldDTO.getBuyerId());
+        Seller updateSeller = sellerRepository.findOne(soldDTO.getSellerId());
+
+        Sold sold = soldRepository.findOne(id);
+
+        if(soldDTO.getBuyerId()!=null){
+            sold.setBuyer(updateBuyer);
+        }
+        if(soldDTO.getSellerId()!=null){
+            sold.setSeller(updateSeller);
+        }
+        if(soldDTO.getDate()!=null){
+            sold.setDate(soldDTO.getDate());
+        }
+        soldRepository.save(sold);
+
+    }
+
     public void addNewSold(SoldController.SoldRequestDTO soldDTO){
         Sold newsold = new Sold();
         Seller seller = sellerRepository.findOne(soldDTO.getSellerId());
